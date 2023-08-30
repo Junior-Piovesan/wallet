@@ -1,3 +1,32 @@
+:root {
+
+  --light-green: #2fc18c;
+
+  --dark-green: #036b52;
+
+  --purple: #41197f;
+
+  --light-purple: #8958a3;
+
+  --blue: #003be5;
+
+  --light-blue: #00d5e2;
+
+  --light-gray: #e1e5eb;
+
+  --dark-gray: #444955;
+
+
+  --black: #1a1b1c;
+
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -26,7 +55,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--light-green);
 }
 
 @keyframes App-logo-spin {
@@ -39,3 +68,15 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: #2fc18c;
+  background-image: url('./assets//backgroun.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* input , button {
+  border-style: none;
+  outline: none;
+} */
