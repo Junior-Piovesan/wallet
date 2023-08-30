@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import validEmail from './utils/validInfo';
 
 import iconMoney from '../assets/🦆 emoji _money with wings_.svg';
+
+import { USER_INFO_UPDATE, userActionCreator } from '../redux/actions';
 
 const INITIAL_STATE = {
   email: '',
@@ -11,6 +15,8 @@ const INITIAL_STATE = {
 
 function Login() {
   const [user, setUser] = useState(INITIAL_STATE);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = (
     { target: { name, value } }:React.ChangeEvent<HTMLInputElement>,
@@ -19,6 +25,12 @@ function Login() {
       ...user,
       [name]: value,
     });
+  };
+
+  const onSubmit = (event:React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    dispatch(userActionCreator(user.email));
+    navigate('/carteira');
   };
 
   return (
@@ -30,7 +42,7 @@ function Login() {
       </div>
 
       <form
-        onSubmit={ (e) => e.preventDefault() }
+        onSubmit={ (e) => onSubmit(e) }
       >
         <label htmlFor="email">
           <input
