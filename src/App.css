@@ -23,9 +23,18 @@
 
 * {
   box-sizing: border-box;
+  font-family: Epilogue, sans-serif;
+  font-size: 1rem;
   margin: 0;
   padding: 0;
 }
+
+/* #root {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+} */
 
 .App {
   text-align: center;
