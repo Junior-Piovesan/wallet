@@ -1,4 +1,4 @@
-// Coloque aqui suas actions do reducer user
+// actions do reducer user
 export const USER_INFO_UPDATE = 'USER_INFO_UPDATE';
 
 export const userActionCreator = (userInfo:string) => {
@@ -8,9 +8,28 @@ export const userActionCreator = (userInfo:string) => {
   };
 };
 
-// Coloque aqui suas actions do reducer wallet
-export const CURRENCIES_UPDATE = 'CURRENCIES_UPDATE';
+// actions do reducer wallet
+export const CURRENCIES_UPDATE_STARTED = 'CURRENCIES_UPDATE_STARTED';
 
-export const walletActionThunk = (currenciesInfo) => {
+export const CURRENCIES_UPDATE_SUCESS = 'CURRENCIES_UPDATE_SUCESS';
 
-}
+export const CURRENCIES_UPDATE_FAIL = 'CURRENCIES_UPDATE_FAIL';
+
+export const walletActionStarted = () => {
+  return {
+    type: CURRENCIES_UPDATE_STARTED,
+  };
+};
+
+export const walletActionSucess = (currencies:string []) => {
+  return {
+    type: CURRENCIES_UPDATE_SUCESS,
+    payload: currencies,
+  };
+};
+
+export const walletActionFail = () => {
+  return {
+    type: CURRENCIES_UPDATE_FAIL,
+  };
+};
