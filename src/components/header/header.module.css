@@ -1,0 +1,31 @@
+.container {
+  align-items: baseline;
+  background-color: white;
+  display: flex;
+  height: 15rem;
+  justify-content: space-around;
+  padding-top: 3rem;
+}
+
+.expensesBox , .userBox {
+  align-items: center;
+  display: flex;
+}
+
+.expensesImage , .totalExpenses , .userImage {
+  margin-right: 0.5rem;
+}
+
+.totalExpenses {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.totalExpensesValue , .totalExpensesCurrency {
+  color: var(--blue);
+
+}
+
+.userEmail {
+  color: var(--light-green);
+}

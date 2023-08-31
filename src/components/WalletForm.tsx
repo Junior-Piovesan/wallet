@@ -1,5 +1,10 @@
+import Header from './header/Header';
+
 function WalletForm() {
-  return <div>WalletForm</div>;
+  return (
+
+    <h1>wallet</h1>
+  );
 }
 
 export default WalletForm;

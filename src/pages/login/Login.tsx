@@ -4,11 +4,10 @@ import { useDispatch } from 'react-redux';
 
 import validEmail from '../../utils/validInfo';
 
-import iconMoney from '../../assets/🦆 emoji _money with wings_.svg';
-
 import { userActionCreator } from '../../redux/actions';
 
 import styles from './login.module.css';
+import Logo from '../../components/logo/Logo';
 
 const INITIAL_STATE = {
   email: '',
@@ -36,49 +35,44 @@ function Login() {
   };
 
   return (
-    <section className={ styles.container }>
-      <div className={ styles.containerTitleImage }>
-        <img
-          className={ styles.image }
-          src={ iconMoney }
-          alt="Icone de dinheiro"
-        />
-        <h1 className={ styles.title }>Trybe </h1>
-        <h1 className={ styles.title2 }>Wallete</h1>
+    <section className={ styles.containerRoot }>
+      <div className={ styles.container }>
 
+        <Logo />
+
+        <form
+          onSubmit={ (e) => onSubmit(e) }
+          className={ styles.formContainer }
+        >
+          <input
+            className={ styles.input }
+            onChange={ handleChange }
+            data-testid="email-input"
+            placeholder="Email"
+            name="email"
+            value={ user.email }
+            type="text"
+          />
+
+          <input
+            className={ styles.input }
+            onChange={ handleChange }
+            data-testid="password-input"
+            placeholder="Senha"
+            name="senha"
+            value={ user.senha }
+            type="text"
+          />
+
+          <button
+            className={ styles.button }
+            disabled={ !validEmail(user) }
+          >
+            Entrar
+          </button>
+        </form>
       </div>
 
-      <form
-        onSubmit={ (e) => onSubmit(e) }
-        className={ styles.formContainer }
-      >
-        <input
-          className={ styles.input }
-          onChange={ handleChange }
-          data-testid="email-input"
-          placeholder="Email"
-          name="email"
-          value={ user.email }
-          type="text"
-        />
-
-        <input
-          className={ styles.input }
-          onChange={ handleChange }
-          data-testid="password-input"
-          placeholder="Senha"
-          name="senha"
-          value={ user.senha }
-          type="text"
-        />
-
-        <button
-          className={ styles.button }
-          disabled={ !validEmail(user) }
-        >
-          Entrar
-        </button>
-      </form>
     </section>
 
   );
