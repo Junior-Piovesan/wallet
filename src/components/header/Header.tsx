@@ -26,6 +26,7 @@ function Header() {
     }, 500);
   });
   return (
+
     <header className={ styles.container }>
       <Logo />
 
@@ -38,7 +39,6 @@ function Header() {
 
         <p
           className={ styles.totalExpenses }
-
         >
           Total de despesas:
         </p>
@@ -52,7 +52,7 @@ function Header() {
           className={ styles.totalExpensesCurrency }
           data-testid="header-currency-field"
         >
-          {isLoading ? loading : 'BRL'}
+          {isLoading ? '' : 'BRL'}
         </p>
       </div>
 

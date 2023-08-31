@@ -1,10 +1,12 @@
 .container {
   align-items: baseline;
-  background-color: white;
+  background-color: var(--white);
+  box-shadow: -4px 9px 13px 0 rgba(5, 18, 54, 0.41);
   display: flex;
   height: 15rem;
   justify-content: space-around;
   padding-top: 3rem;
+  width: 90%;
 }
 
 .expensesBox , .userBox {
