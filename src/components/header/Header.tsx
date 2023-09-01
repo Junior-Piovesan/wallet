@@ -7,17 +7,12 @@ import styles from './header.module.css';
 
 import iconMoedas from '../../assets/Moedas.svg';
 import iconPerfil from '../../assets/perfil.svg';
-
-type GlobalState = {
-  user: {
-    email:string
-  }
-};
+import { ExpensesType, ReduxState } from '../../types/types';
 
 const loading = 'Carregando...';
 
 function Header() {
-  const globalState = useSelector((state:GlobalState) => state.user.email);
+  const globalState = useSelector((state:ReduxState) => state);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -25,6 +20,19 @@ function Header() {
       setIsLoading(false);
     }, 500);
   });
+
+  const sumTotalExpenses = () => {
+    const expense:ExpensesType[] = globalState.wallet.expenses;
+
+    return expense.reduce((acc, curr) => {
+      const moeda = Number(curr.exchangeRates[curr.currency].ask);
+      const valueExpense:number = Number(curr.value);
+      console.log(`Moeda: ${moeda}, Valor da Despesa: ${valueExpense}`);
+      acc += (moeda * valueExpense);
+      return acc;
+    }, 0);
+  };
+
   return (
 
     <header className={ styles.container }>
@@ -46,7 +54,7 @@ function Header() {
           className={ styles.totalExpensesValue }
           data-testid="total-field"
         >
-          {isLoading ? loading : '0'}
+          {sumTotalExpenses().toFixed(2)}
         </p>
         <p
           className={ styles.totalExpensesCurrency }
@@ -66,7 +74,7 @@ function Header() {
           className={ styles.userEmail }
           data-testid="email-field"
         >
-          {isLoading ? loading : globalState}
+          {isLoading ? loading : globalState.user.email}
         </p>
       </div>
     </header>

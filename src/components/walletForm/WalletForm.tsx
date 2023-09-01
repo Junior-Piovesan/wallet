@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState, ChangeEvent } from 'react';
+import { useEffect, useState, ChangeEvent, FormEvent } from 'react';
 
 import { Dispatch, ExpensesType, ReduxState } from '../../types/types';
 
 import fetchCurrencies from '../../utils/fetchCurrencies';
+import getQuotationAddExpense from '../../utils/fetchQuotation';
+// import { actionAddExpense } from '../../redux/actions';
 
 const INITIAL_STATE = {
   id: 0,
@@ -12,7 +14,7 @@ const INITIAL_STATE = {
   currency: 'USD',
   method: 'Dinheiro',
   tag: 'Alimentação',
-  // exchangeRates: {},
+  exchangeRates: {},
 };
 
 type HandleType = ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
@@ -21,6 +23,7 @@ function WalletForm() {
   const [expense, setExpense] = useState<ExpensesType>(INITIAL_STATE);
 
   const curries = useSelector((state:ReduxState) => state.wallet);
+  const walletState = useSelector((state:ReduxState) => state.wallet.expenses);
   const dispatch: Dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,15 +34,29 @@ function WalletForm() {
     target: { value, name } }:HandleType) => {
     const newExpense = {
       ...expense,
+      id: walletState.length,
       [name]: value,
     };
     setExpense(newExpense);
-    return console.log(value);
+  };
+
+  const expensesValidation = () => {
+    const valuesExpense = Object.values(expense);
+    return valuesExpense.every((e) => e !== '');
+  };
+
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (expensesValidation()) {
+      // dispatch(actionAddExpense(expense));
+      dispatch(getQuotationAddExpense(expense));
+      setExpense(INITIAL_STATE);
+    }
   };
 
   return (
 
-    <form onSubmit={ (e) => e.preventDefault() }>
+    <form onSubmit={ (event) => onSubmit(event) }>
 
       <div>
 
@@ -51,6 +68,7 @@ function WalletForm() {
             type="text"
             id="description"
             name="description"
+            value={ expense.description }
           />
         </label>
 
@@ -61,6 +79,7 @@ function WalletForm() {
             data-testid="tag-input"
             name="tag"
             id="tag"
+            value={ expense.tag }
           >
             <option value="Alimentação">Alimentação</option>
             <option value="Lazer">Lazer</option>
@@ -75,9 +94,10 @@ function WalletForm() {
           <input
             onChange={ handleChange }
             data-testid="value-input"
-            type="number"
+            type="text"
             id="value"
             name="value"
+            value={ expense.value > '0' ? expense.value : '' }
           />
         </label>
 
@@ -88,6 +108,8 @@ function WalletForm() {
             data-testid="method-input"
             name="method"
             id="method"
+            value={ expense.method }
+
           >
             <option value="Dinheiro">Dinheiro</option>
             <option value="Cartão de crédito">Cartão de crédito</option>
@@ -102,6 +124,7 @@ function WalletForm() {
             data-testid="currency-input"
             name="currency"
             id="currency"
+            value={ expense.currency }
           >
             { curries.currencies.map((currency, index) => (
               <option key={ index } value={ currency }>{currency}</option>
@@ -111,7 +134,9 @@ function WalletForm() {
 
       </div>
 
-      <button>
+      <button
+        disabled={ !expensesValidation() }
+      >
         Adicionar despesa
 
       </button>

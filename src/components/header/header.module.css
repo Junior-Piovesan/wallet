@@ -14,7 +14,7 @@
   display: flex;
 }
 
-.expensesImage , .totalExpenses , .userImage {
+.expensesImage , .totalExpenses , .userImage , .totalExpensesValue {
   margin-right: 0.5rem;
 }
 

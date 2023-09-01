@@ -8,7 +8,15 @@ export type ExpensesType = {
   method:string,
   tag: string,
   description:string,
-  // exchangeRates:object
+  exchangeRates:{
+    [key:string]:QuotationType
+  }
+};
+
+export type QuotationType = {
+  ask:string,
+  code:string,
+  name:string
 };
 
 export type ActionType = {
