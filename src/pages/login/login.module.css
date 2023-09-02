@@ -35,16 +35,6 @@
 
 .button {
   background-color: var(--blue);
-  border-radius: 0.2rem;
   color: var(--light-gray);
-  cursor: pointer;
-  font-weight: 700;
-  height: 30px;
   width: 100%;
 }
-
-.button:disabled {
-  cursor: not-allowed;
-  opacity: 0.2;
-}
-

@@ -7,7 +7,7 @@ function Wallet() {
   return (
     <div className={ styles.container }>
       <Header />
-      <main>
+      <main className={ styles.main }>
         <WalletForm />
       </main>
     </div>

@@ -7,6 +7,8 @@ import fetchCurrencies from '../../utils/fetchCurrencies';
 import getQuotationAddExpense from '../../utils/fetchQuotation';
 // import { actionAddExpense } from '../../redux/actions';
 
+import styles from './walletForm.module.css';
+
 const INITIAL_STATE = {
   id: 0,
   value: '',
@@ -56,13 +58,21 @@ function WalletForm() {
 
   return (
 
-    <form onSubmit={ (event) => onSubmit(event) }>
+    <form
+      onSubmit={ (event) => onSubmit(event) }
+      className={ styles.containerForm }
+    >
+      <div
+        className={ styles.containerFormDiv }
+      >
 
-      <div>
-
-        <label htmlFor="description">
+        <label
+          htmlFor="description"
+          className={ styles.labelDescription }
+        >
           Descrição da despesa
           <input
+            className={ styles.inputDescription }
             onChange={ handleChange }
             data-testid="description-input"
             type="text"
@@ -72,26 +82,59 @@ function WalletForm() {
           />
         </label>
 
-        <label htmlFor="tag">
+        <label
+          htmlFor="tag"
+          className={ styles.labelTag }
+        >
           Categoria da despesa
           <select
+            className={ styles.selectTag }
             onChange={ handleChange }
             data-testid="tag-input"
             name="tag"
             id="tag"
             value={ expense.tag }
           >
-            <option value="Alimentação">Alimentação</option>
-            <option value="Lazer">Lazer</option>
-            <option value="Trabalho">Trabalho</option>
-            <option value="Transporte">Transporte</option>
-            <option value="Saúde">Saúde</option>
+            <option
+              className={ styles.option }
+              value="Alimentação"
+            >
+              Alimentação
+            </option>
+            <option
+              className={ styles.option }
+              value="Lazer"
+            >
+              Lazer
+            </option>
+            <option
+              className={ styles.option }
+              value="Trabalho"
+            >
+              Trabalho
+            </option>
+            <option
+              className={ styles.option }
+              value="Transporte"
+            >
+              Transporte
+            </option>
+            <option
+              className={ styles.option }
+              value="Saúde"
+            >
+              Saúde
+            </option>
           </select>
         </label>
 
-        <label htmlFor="value">
+        <label
+          className={ styles.labelValue }
+          htmlFor="value"
+        >
           Valor
           <input
+            className={ styles.inputValue }
             onChange={ handleChange }
             data-testid="value-input"
             type="text"
@@ -101,9 +144,13 @@ function WalletForm() {
           />
         </label>
 
-        <label htmlFor="method">
+        <label
+          className={ styles.labelMethod }
+          htmlFor="method"
+        >
           Metodo de pagamento
           <select
+            className={ styles.selectMethod }
             onChange={ handleChange }
             data-testid="method-input"
             name="method"
@@ -111,15 +158,34 @@ function WalletForm() {
             value={ expense.method }
 
           >
-            <option value="Dinheiro">Dinheiro</option>
-            <option value="Cartão de crédito">Cartão de crédito</option>
-            <option value="Cartão de débito">Cartão de débito</option>
+            <option
+              className={ styles.option }
+              value="Dinheiro"
+            >
+              Dinheiro
+            </option>
+            <option
+              className={ styles.option }
+              value="Cartão de crédito"
+            >
+              Cartão de crédito
+            </option>
+            <option
+              className={ styles.option }
+              value="Cartão de débito"
+            >
+              Cartão de débito
+            </option>
           </select>
         </label>
 
-        <label htmlFor="currency">
+        <label
+          className={ styles.labelCurrency }
+          htmlFor="currency"
+        >
           Moeda
           <select
+            className={ styles.selectCurrency }
             onChange={ handleChange }
             data-testid="currency-input"
             name="currency"
@@ -127,7 +193,13 @@ function WalletForm() {
             value={ expense.currency }
           >
             { curries.currencies.map((currency, index) => (
-              <option key={ index } value={ currency }>{currency}</option>
+              <option
+                className={ styles.option }
+                key={ index }
+                value={ currency }
+              >
+                {currency}
+              </option>
             ))}
           </select>
         </label>
@@ -135,6 +207,7 @@ function WalletForm() {
       </div>
 
       <button
+        className={ styles.button }
         disabled={ !expensesValidation() }
       >
         Adicionar despesa

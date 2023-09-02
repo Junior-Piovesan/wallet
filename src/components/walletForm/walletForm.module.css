@@ -1,0 +1,63 @@
+.containerForm {
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  box-shadow: -4px 9px 13px 0 rgba(5, 18, 54, 0.41);
+  min-height: 15rem;
+  text-align: center;
+  width: 90%;
+}
+
+.containerFormDiv {
+  align-items: center;
+  background-color: var(--light-gray);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  min-height: 10rem;
+}
+
+
+.labelDescription , .labelTag , .selectTag , .option , .labelMethod , .selectMethod , .labelValue , .labelCurrency , .selectCurrency {
+  color: var(--blue);
+  font-weight: 600;
+  margin-right: 0.6rem;
+}
+
+.inputDescription , .selectTag , .selectMethod , .option , .inputValue , .selectCurrency {
+  background-color: var(--light-gray);
+  border: 1px solid var(--blue);
+  border-radius: 0.2rem;
+  height: 30px;
+  margin-left: 1rem;
+  outline: none;
+}
+
+.labelDescription {
+  width: 55%;
+}
+
+.inputDescription {
+  width: 50%;
+}
+
+.labelTag {
+  width: 30%;
+}
+
+.labelCurrency {
+  width: 15%;
+}
+
+.selectTag , .selectMethod , .selectCurrency {
+  width: 45%;
+}
+
+.labelMethod {
+  width: 40%;
+}
+
+.button {
+  background-color: var(--light-green);
+  margin-top: 1.5rem;
+  width: 20rem;
+}
