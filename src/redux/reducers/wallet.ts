@@ -10,7 +10,20 @@ import {
   QUOTATION_UPDATE_SUCESS,
   QUOTATION_UPDATE_FAIL,
   DELETE_EXPENSE,
+  UPDATE_EXPENSE,
+  UPADATE_FORM_EDIT,
+  ADD_EXPENSE_EDIT,
 } from '../actions';
+
+export const INITIAL_STATE_EXPENSE_EDIT = {
+  id: 0,
+  value: '',
+  description: '',
+  currency: 'USD',
+  method: 'Dinheiro',
+  tag: 'Alimentação',
+  exchangeRates: {},
+};
 
 const INITIAL_STATE:InitialStateWallet = {
   isFetching: false,
@@ -18,6 +31,8 @@ const INITIAL_STATE:InitialStateWallet = {
   expenses: [],
   editor: false,
   idToEdit: 0,
+  edit: false,
+  expenseEdit: INITIAL_STATE_EXPENSE_EDIT,
 };
 
 const walletReducer = (state = INITIAL_STATE, action:ActionType) => {
@@ -38,11 +53,6 @@ const walletReducer = (state = INITIAL_STATE, action:ActionType) => {
         ...state,
         isFetching: false,
       };
-    // case ADD_EXPENSE:
-    //   return {
-    //     ...state,
-    //     expenses: [...state.expenses, action.payload],
-    //   };
     case QUOTATION_UPDATE_SUCESS:
       return {
         ...state,
@@ -57,6 +67,21 @@ const walletReducer = (state = INITIAL_STATE, action:ActionType) => {
         expenses: newExpenseList,
       };
     }
+    case UPDATE_EXPENSE:
+      return {
+        ...state,
+        expenses: action.payload,
+      };
+    case UPADATE_FORM_EDIT:
+      return {
+        ...state,
+        edit: action.payload,
+      };
+    case ADD_EXPENSE_EDIT:
+      return {
+        ...state,
+        expenseEdit: action.payload,
+      };
     default:
       return state;
   }

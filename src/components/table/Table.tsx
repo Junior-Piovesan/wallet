@@ -1,18 +1,25 @@
 import { useDispatch, useSelector } from 'react-redux';
-
-import { ReduxState } from '../../types/types';
-
+import { ExpensesType, ReduxState } from '../../types/types';
 import deleteIcon from '../../assets/delete.svg';
 import editIcon from '../../assets/Editar.svg';
-import { actionExpenseDelete } from '../../redux/actions';
+import { actionAddExpenseEdit,
+  actionExpenseDelete,
+  actionUpadteFormEdit } from '../../redux/actions';
+
+import styles from './table.module.css';
 
 function Table() {
   const globalState = useSelector((state:ReduxState) => state.wallet.expenses);
   const dispatch = useDispatch();
 
+  const AddExpenseEdit = (id:number) => {
+    const expenseEdit = globalState.find((exp) => exp.id === id) as ExpensesType;
+    dispatch(actionAddExpenseEdit(expenseEdit));
+  };
+
   return (
 
-    <section>
+    <section className={ styles.tableContainer }>
       <table>
         <thead>
           <tr>
@@ -46,6 +53,10 @@ function Table() {
                 <td>Real</td>
                 <td>
                   <button
+                    onClick={ () => {
+                      AddExpenseEdit(id);
+                      dispatch(actionUpadteFormEdit(true));
+                    } }
                     data-testid="edit-btn"
                   >
                     <img src={ editIcon } alt="icone para editar despesa" />

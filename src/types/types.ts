@@ -21,7 +21,7 @@ export type QuotationType = {
 
 export type ActionType = {
   type: string,
-  payload:string[] | boolean | string | number
+  payload:string[] | boolean | string | number | ExpensesType
 };
 
 export type InitialStateWallet = {
@@ -30,6 +30,8 @@ export type InitialStateWallet = {
   expenses: ExpensesType[],
   editor: boolean,
   idToEdit: number,
+  edit:boolean
+  expenseEdit: ExpensesType
 };
 
 export type ReduxState = {
@@ -42,7 +44,15 @@ export type ReduxState = {
     expenses: ExpensesType[],
     editor: boolean,
     idToEdit: number,
+    edit:boolean,
+    expenseEdit:ExpensesType
+    exchangeRates:{
+      [key:string]:QuotationType
+    }
   }
 };
+
+export type HandleType = React.ChangeEvent<
+HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
 
 export type Dispatch = ThunkDispatch<ReduxState, null, AnyAction>;

@@ -1,5 +1,6 @@
-.container {
+.tableContainer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   width: 100%;
 }
@@ -9,7 +10,9 @@
   border-radius: 0.5rem;
   box-shadow: -4px 9px 13px 0 rgba(5, 18, 54, 0.41);
   min-height: 15rem;
+  position: absolute;
   text-align: center;
+  top: 26.9%;
   width: 80%;
 }
 

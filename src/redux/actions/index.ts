@@ -26,6 +26,13 @@ export const QUOTATION_UPDATE_FAIL = 'QUOTATION_UPDATE_FAIL';
 
 // action para deletar despesa
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
+export const UPDATE_EXPENSE = 'UPDATE_EXPENSE';
+
+// action para mudar o formulario de editar
+export const UPADATE_FORM_EDIT = 'UPADATE_FORM_EDIT';
+
+// action para pegar a despesa a ser editada e adicionar no estado global
+export const ADD_EXPENSE_EDIT = 'ADD_EXPENSE_EDIT';
 
 // action adicionar nova despesa
 // export const ADD_EXPENSE = 'ADD_EXPENSE';
@@ -49,14 +56,6 @@ export const walletActionFail = () => {
     type: CURRENCIES_UPDATE_FAIL,
   };
 };
-
-// actionCreators reducer wallet para adicionar nova despesa
-// export const actionAddExpense = (expense:ExpensesType) => {
-//   return {
-//     type: ADD_EXPENSE,
-//     payload: expense,
-//   };
-// };
 
 // actionsCreators para buscar a cotação no momento de adicionar nova despesa
 export const actionGetQuotationStart = () => {
@@ -84,5 +83,30 @@ export const actionExpenseDelete = (id:number) => {
     type: DELETE_EXPENSE,
     payload: id,
 
+  };
+};
+
+// action creator para excluir uma despesa
+export const actionUpdateExpense = (expenseList:ExpensesType[]) => {
+  return {
+    type: UPDATE_EXPENSE,
+    payload: expenseList,
+
+  };
+};
+
+// actionCreator para mudar o formulario de editar
+export const actionUpadteFormEdit = (isEdit:boolean) => {
+  return {
+    type: UPADATE_FORM_EDIT,
+    payload: isEdit,
+  };
+};
+
+// actionCreator para pegar a despesa a ser editada e adicionar no estado global
+export const actionAddExpenseEdit = (expense:ExpensesType) => {
+  return {
+    type: ADD_EXPENSE_EDIT,
+    payload: expense,
   };
 };
