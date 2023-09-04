@@ -4,7 +4,7 @@
   box-shadow: -4px 9px 13px 0 rgba(5, 18, 54, 0.41);
   min-height: 15rem;
   text-align: center;
-  width: 90%;
+  width: 80%;
 }
 
 .containerFormDiv {
@@ -17,7 +17,7 @@
 }
 
 
-.labelDescription , .labelTag , .selectTag , .option , .labelMethod , .selectMethod , .labelValue , .labelCurrency , .selectCurrency {
+.option , .labelMethod , .labelValue , .labelCurrency {
   color: var(--blue);
   font-weight: 600;
   margin-right: 0.6rem;
@@ -33,6 +33,9 @@
 }
 
 .labelDescription {
+  color: var(--blue);
+  font-weight: 600;
+  margin-right: 0.6rem;
   width: 55%;
 }
 
@@ -41,6 +44,9 @@
 }
 
 .labelTag {
+  color: var(--blue);
+  font-weight: 600;
+  margin-right: 0.6rem;
   width: 30%;
 }
 
@@ -49,6 +55,9 @@
 }
 
 .selectTag , .selectMethod , .selectCurrency {
+  color: var(--blue);
+  font-weight: 600;
+  margin-right: 0.6rem;
   width: 45%;
 }
 

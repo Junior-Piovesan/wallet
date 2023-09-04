@@ -27,7 +27,6 @@ function Header() {
     return expense.reduce((acc, curr) => {
       const moeda = Number(curr.exchangeRates[curr.currency].ask);
       const valueExpense:number = Number(curr.value);
-      console.log(`Moeda: ${moeda}, Valor da Despesa: ${valueExpense}`);
       acc += (moeda * valueExpense);
       return acc;
     }, 0);
