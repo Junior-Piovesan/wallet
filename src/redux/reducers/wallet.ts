@@ -9,6 +9,7 @@ import {
   QUOTATION_UPDATE_STARTED,
   QUOTATION_UPDATE_SUCESS,
   QUOTATION_UPDATE_FAIL,
+  DELETE_EXPENSE,
 } from '../actions';
 
 const INITIAL_STATE:InitialStateWallet = {
@@ -48,6 +49,14 @@ const walletReducer = (state = INITIAL_STATE, action:ActionType) => {
         isFetching: false,
         expenses: [...state.expenses, action.payload],
       };
+
+    case DELETE_EXPENSE: {
+      const newExpenseList = state.expenses.filter((exp) => exp.id !== action.payload);
+      return {
+        ...state,
+        expenses: newExpenseList,
+      };
+    }
     default:
       return state;
   }

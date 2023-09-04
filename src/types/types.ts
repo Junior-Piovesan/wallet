@@ -21,7 +21,7 @@ export type QuotationType = {
 
 export type ActionType = {
   type: string,
-  payload:string[] | boolean | string
+  payload:string[] | boolean | string | number
 };
 
 export type InitialStateWallet = {

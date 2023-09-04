@@ -24,6 +24,9 @@ export const QUOTATION_UPDATE_SUCESS = 'QUOTATION_UPDATE_SUCESS';
 
 export const QUOTATION_UPDATE_FAIL = 'QUOTATION_UPDATE_FAIL';
 
+// action para deletar despesa
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
+
 // action adicionar nova despesa
 // export const ADD_EXPENSE = 'ADD_EXPENSE';
 
@@ -72,5 +75,14 @@ export const actionGetQuotationSucess = (expense: ExpensesType, quotation:object
 export const actionGetQuotationFail = () => {
   return {
     type: QUOTATION_UPDATE_FAIL,
+  };
+};
+
+// action creator para excluir uma despesa
+export const actionExpenseDelete = (id:number) => {
+  return {
+    type: DELETE_EXPENSE,
+    payload: id,
+
   };
 };

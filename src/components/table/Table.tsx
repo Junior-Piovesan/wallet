@@ -1,12 +1,15 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { ReduxState } from '../../types/types';
 
 import deleteIcon from '../../assets/delete.svg';
 import editIcon from '../../assets/Editar.svg';
+import { actionExpenseDelete } from '../../redux/actions';
 
 function Table() {
   const globalState = useSelector((state:ReduxState) => state.wallet.expenses);
+  const dispatch = useDispatch();
+
   return (
 
     <section>
@@ -42,12 +45,19 @@ function Table() {
                 </td>
                 <td>Real</td>
                 <td>
-                  <button>
+                  <button
+                    data-testid="edit-btn"
+                  >
                     <img src={ editIcon } alt="icone para editar despesa" />
                   </button>
-                  <button>
+
+                  <button
+                    onClick={ () => dispatch(actionExpenseDelete(id)) }
+                    data-testid="delete-btn"
+                  >
                     <img src={ deleteIcon } alt="icone para excluir despesa" />
                   </button>
+
                 </td>
               </tr>
             ))}
