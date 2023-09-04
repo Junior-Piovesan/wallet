@@ -20,60 +20,90 @@ function Table() {
   return (
 
     <section className={ styles.tableContainer }>
-      <table>
-        <thead>
-          <tr>
-            <th>Descrição</th>
-            <th>Tag</th>
-            <th>Método de pagamento</th>
-            <th>Valor</th>
-            <th>Moeda</th>
-            <th>Câmbio utilizado</th>
-            <th>Valor convertido</th>
-            <th>Moeda de conversão</th>
-            <th>Editar/Excluir</th>
-          </tr>
-        </thead>
-        <tbody>
-          {globalState
-            .map(({ id, value, currency, method, tag, description, exchangeRates }) => (
+      {globalState.length > 0 ? (
+        <table className={ styles.table }>
+          <thead>
+            <tr>
+              <th className={ styles.tableHead }>
+                Descrição
+              </th>
+              <th className={ styles.tableHead }>Tag</th>
+              <th className={ styles.tableHead }>Método de pagamento</th>
+              <th className={ styles.tableHead }>Valor</th>
+              <th className={ styles.tableHead }>Moeda</th>
+              <th className={ styles.tableHead }>Câmbio utilizado</th>
+              <th className={ styles.tableHead }>Valor convertido</th>
+              <th className={ styles.tableHead }>Moeda de conversão</th>
+              <th className={ styles.tableHeadEditarExcluir }>Editar/Excluir</th>
+            </tr>
+          </thead>
+          <tbody>
+            {globalState
+              .map(({
+                id,
+                value,
+                currency,
+                method,
+                tag,
+                description,
+                exchangeRates,
+              }, index) => (
 
-              <tr
-                key={ id }
-              >
-                <td>{description}</td>
-                <td>{tag}</td>
-                <td>{method}</td>
-                <td>{Number(value).toFixed(2)}</td>
-                <td>{exchangeRates[currency].name}</td>
-                <td>{Number(exchangeRates[currency].ask).toFixed(2) }</td>
-                <td>
-                  {(Number(value) * Number(exchangeRates[currency].ask)).toFixed(2)}
-                </td>
-                <td>Real</td>
-                <td>
-                  <button
-                    onClick={ () => {
-                      AddExpenseEdit(id);
-                      dispatch(actionUpadteFormEdit(true));
-                    } }
-                    data-testid="edit-btn"
+                <tr
+                  key={ `${id} ${index}` }
+                >
+                  <td className={ styles.tableInfoDescription }>{description}</td>
+                  <td className={ styles.tableInfo }>{tag}</td>
+                  <td className={ styles.tableInfo }>{method}</td>
+                  <td className={ styles.tableInfo }>{Number(value).toFixed(2)}</td>
+                  <td className={ styles.tableInfo }>{exchangeRates[currency].name}</td>
+                  <td
+                    className={ styles.tableInfo }
                   >
-                    <img src={ editIcon } alt="icone para editar despesa" />
-                  </button>
+                    {Number(exchangeRates[currency].ask).toFixed(2) }
 
-                  <button
-                    onClick={ () => dispatch(actionExpenseDelete(id)) }
-                    data-testid="delete-btn"
-                  >
-                    <img src={ deleteIcon } alt="icone para excluir despesa" />
-                  </button>
+                  </td>
+                  <td className={ styles.tableInfo }>
+                    {(Number(value) * Number(exchangeRates[currency].ask)).toFixed(2)}
+                  </td>
+                  <td className={ styles.tableInfo }>Real</td>
+                  <td className={ styles.tableInfoEditarExcluir }>
+                    <button
+                      onClick={ () => {
+                        AddExpenseEdit(id);
+                        dispatch(actionUpadteFormEdit(true));
+                      } }
+                      className={ styles.btn }
+                      data-testid="edit-btn"
+                    >
+                      <img
+                        className={ styles.imageEdit }
+                        src={ editIcon }
+                        alt="icone para editar despesa"
+                      />
+                    </button>
 
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+                    <button
+                      onClick={ () => dispatch(actionExpenseDelete(id)) }
+                      data-testid="delete-btn"
+                      className={ styles.btn }
+                    >
+                      <img
+                        className={ styles.imageDelete }
+                        src={ deleteIcon }
+                        alt="icone para excluir despesa"
+                      />
+                    </button>
+
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      ) : (
+        <h2 className={ styles.notExpenses }>Você não tem despesas!</h2>
+      )}
+
     </section>
   );
 }

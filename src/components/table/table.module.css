@@ -1,81 +1,72 @@
 .tableContainer {
+  background-color: var(--blue);
+  border-radius: 0.5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  min-height: 50vh;
+  position: absolute;
+  width: 95%;
+  z-index: 1;
+}
+
+.table , .notExpenses {
+  margin-top: 19rem;
   width: 100%;
 }
 
-.containerForm {
-  background-color: var(--white);
-  border-radius: 0.5rem;
-  box-shadow: -4px 9px 13px 0 rgba(5, 18, 54, 0.41);
-  min-height: 15rem;
-  position: absolute;
+.notExpenses {
+  color: var(--light-green);
   text-align: center;
-  top: 26.9%;
-  width: 80%;
 }
 
-.containerFormDiv {
-  align-items: center;
-  background-color: var(--light-gray);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  min-height: 10rem;
+.tableHead , .tableInfo {
+  border-bottom: 2px solid var(--light-gray);
+  border-right: 2px solid var(--light-gray);
+  padding: 0.2rem;
+  text-align: center;
+  width: 14rem;
 }
 
-
-.option , .labelMethod , .labelValue , .labelCurrency {
-  color: var(--blue);
-  font-weight: 600;
-  margin-right: 0.6rem;
+.tableHead , .tableHeadEditarExcluir {
+  color: var(--white);
 }
 
-.inputDescription , .selectTag , .selectMethod , .option , .inputValue , .selectCurrency {
-  background-color: var(--light-gray);
-  border: 1px solid var(--blue);
-  border-radius: 0.2rem;
-  height: 30px;
-  margin-left: 1rem;
-  outline: none;
+.tableInfo , .tableInfoDescription {
+  color: var(--light-green);
 }
 
-.labelDescription {
-  color: var(--blue);
-  font-weight: 600;
-  margin-right: 0.6rem;
-  width: 55%;
+.tableInfoEditarExcluir , .tableInfoDescription , .tableHead , .tableInfo {
+  height: 4rem;
+  width: 12rem;
 }
 
-.inputDescription {
-  width: 50%;
-}
-
-.labelTag {
-  color: var(--blue);
-  font-weight: 600;
-  margin-right: 0.6rem;
-  width: 30%;
-}
-
-.labelCurrency {
-  width: 15%;
-}
-
-.selectTag , .selectMethod , .selectCurrency {
-  color: var(--blue);
-  font-weight: 600;
-  margin-right: 0.6rem;
-  width: 45%;
-}
-
-.labelMethod {
+.btn {
+  background-color: transparent;
   width: 40%;
 }
 
-.button {
-  background-color: var(--light-green);
-  margin-top: 1.5rem;
-  width: 20rem;
+.tableInfoDescription {
+  border-bottom: 2px solid var(--light-gray);
+  border-right: 2px solid var(--light-gray);
+  padding: 0.2rem;
+  text-align: center;
+}
+
+.tableHeadEditarExcluir {
+  border-bottom: 2px solid var(--light-gray);
+}
+
+.tableInfoEditarExcluir {
+  border-bottom: 2px solid var(--light-gray);
+  padding: 0.2rem;
+  text-align: center;
+}
+
+.imageEdit {
+  width: 30%;
+}
+
+.imageDelete {
+  width: 21%;
 }

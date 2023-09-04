@@ -29,7 +29,6 @@ function WalletForm() {
 
   useEffect(() => {
     setExpenseEdit(walletState.expenseEdit);
-    console.log('oi');
   }, [walletState.expenseEdit]);
 
   const handleChangeWallet = ({
@@ -58,7 +57,6 @@ function WalletForm() {
       dispatch(actionUpdateExpense(newExpenseList));
       setExpenseEdit(INITIAL_STATE);
       dispatch(actionUpadteFormEdit(false));
-      return console.log(newExpenseList);
     }
   };
 
