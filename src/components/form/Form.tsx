@@ -5,7 +5,6 @@ import fetchCurrencies from '../../utils/fetchCurrencies';
 import expensesValidation from '../../utils/expenseValidation';
 
 import { Dispatch, ExpensesType, HandleType, ReduxState } from '../../types/types';
-import { actionUpadteFormEdit } from '../../redux/actions';
 
 type PropsType = {
   onSubmit: (event:FormEvent<HTMLFormElement>) => void

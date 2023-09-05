@@ -1,5 +1,5 @@
 import { expect, vi } from 'vitest';
-import { getByRole, screen } from '@testing-library/dom';
+import { screen } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
 
 import { renderWithRouterAndRedux } from './helpers/renderWith';
@@ -86,7 +86,7 @@ describe('Verificando se a aplicação funciona como esperado', () => {
 
   it('Verifica se ao adicionar uma nova despesa ela é renderizada na tabela e se é possivel editar ', async () => {
     // const fetch = vi.spyOn(global, 'fetch').mockResolvedValue(mockData);
-    const { debug } = renderWithRouterAndRedux(<App />);
+    renderWithRouterAndRedux(<App />);
     const inputEmail = screen.getByTestId('email-input');
     const inputSenha = screen.getByTestId('password-input');
     const btn = screen.getByRole('button', { name: 'Entrar' });
