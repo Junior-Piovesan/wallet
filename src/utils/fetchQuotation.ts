@@ -5,14 +5,16 @@ import {
   actionGetQuotationSucess,
   actionGetQuotationFail,
 } from '../redux/actions';
+import { fetchCotacao } from './fetch';
 
-const getQuotationAddExpense = (expense:ExpensesType) => {
+export const getQuotationAddExpense = (expense:ExpensesType) => {
   return async (dispatch:Dispatch) => {
     try {
       dispatch(actionGetQuotationStart());
 
-      const response = await fetch('https://economia.awesomeapi.com.br/json/all');
-      const data = await response.json();
+      // const response = await fetch('https://economia.awesomeapi.com.br/json/all');
+      // const data = await response.json();
+      const data = await fetchCotacao();
 
       dispatch(actionGetQuotationSucess(expense, data));
     } catch (error) {
@@ -22,4 +24,4 @@ const getQuotationAddExpense = (expense:ExpensesType) => {
   };
 };
 
-export default getQuotationAddExpense;
+// export default getQuotationAddExpense;

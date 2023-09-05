@@ -3,7 +3,7 @@ import { useState, FormEvent, useEffect } from 'react';
 
 import { Dispatch, ExpensesType, ReduxState, HandleType } from '../../types/types';
 
-import getQuotationAddExpense from '../../utils/fetchQuotation';
+import { getQuotationAddExpense } from '../../utils/fetchQuotation';
 import expensesValidation from '../../utils/expenseValidation';
 
 import styles from './walletForm.module.css';
