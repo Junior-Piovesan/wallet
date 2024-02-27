@@ -26,7 +26,7 @@ npm run dev
 Este projeto foi desenvolvido por <a href=https://www.linkedin.com/in/junior-piovesan-silva/ target=blank>Junior Piovesan</a>
 
 ## Deploy
-O projeto está disponível online e pode ser acessado através do seguinte link: <a href=https://wallet-kohl-kappa.vercel.app/ target=blank>wallet</a>
+O projeto está disponível online e pode ser acessado através do seguinte link: <a href=https://wallet-ashen-zeta.vercel.app/ target=blank>wallet</a>
 
 ## Variáveis de Ambiente
 Este projeto utiliza variáveis de ambiente configuradas pela escola Trybe.
